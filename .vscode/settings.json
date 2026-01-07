@@ -1,6 +1,11 @@
 {
-    "editor.formatOnSave": true,
     "[blade]": {
-        "editor.defaultFormatter": "shufo.vscode-blade-formatter"
+        "editor.defaultFormatter": "shufo.vscode-blade-formatter",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4
+    },
+    "bladeFormatter.format": {
+        "indentSize": 4,
+        "wrapLineLength": 120
     }
 }
