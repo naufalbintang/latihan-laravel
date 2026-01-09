@@ -1,21 +1,82 @@
 <?php
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', ['title' => 'Home Page']);
 });
 
-Route::get("/blog", function () {
-    return view('blog');
+Route::get("/posts", function () {
+    return view(
+        'posts',
+        [
+            'title' => 'Posts Page',
+            'posts' => [
+                [
+                    'id' => 1,
+                    'slug' => 'judul-artikel-1',
+                    'title' => 'Judul Artikel 1',
+                    'author' => 'Naufal Bintang Pradana Himawan',
+                    'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut, voluptate rerum quae, eum aspernatur assumenda
+                    quisquam optio eos, soluta corporis magnam tempore nulla ducimus? Itaque facere obcaecati molestiae
+                    voluptatem repellat.'
+                ],
+                [
+                    'id' => 2,
+                    'slug' => 'judul-artikel-2',
+                    'title' => 'Judul Artikel 2',
+                    'author' => 'Arixa',
+                    'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum corrupti pariatur nihil quia officia. Quas
+                    magnam aut voluptatum doloribus quidem eaque blanditiis dicta pariatur hic distinctio! Voluptatibus numquam
+                    temporibus asperiores?'
+                ],
+            ],
+        ]
+    );
+});
+
+Route::get('/posts/{slug}', function ($slug) {
+    $posts = [
+        [
+            'id' => 1,
+            'slug' => 'judul-artikel-1',
+            'title' => 'Judul Artikel 1',
+            'author' => 'Naufal Bintang Pradana Himawan',
+            'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut, voluptate rerum quae,  eum aspernatur assumenda
+            quisquam optio eos, soluta corporis magnam tempore nulla ducimus? Itaque facere obcaecati molestiae
+            voluptatem repellat.'
+        ],
+        [
+            'id' => 2,
+            'slug' => 'judul-artikel-2',
+            'title' => 'Judul Artikel 2',
+            'author' => 'Arixa',
+            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum corrupti pariatur nihil quia officia. Quas
+            magnam aut voluptatum doloribus quidem eaque blanditiis dicta pariatur hic distinctio! Voluptatibus numquam
+            temporibus asperiores?'
+        ]
+    ];
+
+    $post = Arr::first($posts, function ($post) use ($slug) {
+        return $post['slug'] == $slug;
+    });
+
+    return view(
+        'post',
+        [
+            'title' => 'Single Post',
+            'post' => $post
+        ]
+    );
 });
 
 Route::get('/about', function () {
-    return view('about');
+    return view('about', ['title' => 'About Page']);
 });
 
 Route::get('/contact', function () {
-    return view('contact');
+    return view('contact', ['title' => 'Contact Page']);
 });
 
 Route::get('/teams', function () {
@@ -46,5 +107,5 @@ Route::get('/teams', function () {
             "medsoc" => null
         ],
     ];
-    return view('teams', ["teams" => $teams]);
+    return view('teams', ['title' => 'Teams Page', "teams" => $teams]);
 });

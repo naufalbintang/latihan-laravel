@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:title>Teams Page</x-slot:title>
+    <x-slot:title>{{ $title }}</x-slot:title>
     <div class="w-full flex justify-center">
         <table class="table-auto border border-gray-600 min-w-1/2">
             <thead>
