@@ -7,5 +7,7 @@
     "bladeFormatter.format": {
         "indentSize": 4,
         "wrapLineLength": 120
-    }
+    },
+    "editor.inlineSuggest.edits.allowCodeShifting": "never",
+    "editor.inlineSuggest.edits.renderSideBySide": "never"
 }
