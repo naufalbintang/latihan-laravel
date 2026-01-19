@@ -14,13 +14,13 @@
                     <tr>
                         <td class="p-4 border border-gray-600">{{ $team['name'] }}</td>
                         <td class="p-4 border border-gray-600">{{ $team['role'] }}</td>
-                        @if ($team['medsoc'])
-                            <td class="p-4 border border-gray-600">
-                                <a href="{{ $team['medsoc'] }}" target="_blank">Instagram</a>
-                            </td>
-                        @else
-                            <td class="p-4 border border-gray-600">Tidak ada Media Sosial</td>
-                        @endif
+                        <td class="p-4 border border-gray-600">
+                            @if ($team->medsoc)
+                                <a href="https://instagram.com/{{ $team->medsoc }}">Instagram</a>
+                            @else
+                                Tidak ada media sosial
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
